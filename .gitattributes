@@ -1,0 +1,28 @@
+# 줄바꿈 정규화. 체크아웃 OS와 무관하게 저장소에는 LF로 저장한다.
+* text=auto
+
+# 유니티가 텍스트로 직렬화하는 파일은 LF로 고정한다.
+# 서로 다른 OS에서 저장해도 diff가 줄바꿈 때문에 오염되지 않게 한다.
+*.cs      text eol=lf
+*.meta    text eol=lf
+*.asset   text eol=lf
+*.unity   text eol=lf
+*.prefab  text eol=lf
+*.mat     text eol=lf
+*.anim    text eol=lf
+*.controller text eol=lf
+*.asmdef  text eol=lf
+*.json    text eol=lf
+*.yml     text eol=lf
+*.md      text eol=lf
+
+# 바이너리는 줄바꿈 변환 대상에서 제외한다.
+*.png     binary
+*.jpg     binary
+*.psd     binary
+*.wav     binary
+*.mp3     binary
+*.ogg     binary
+*.ttf     binary
+*.otf     binary
+*.fbx     binary
