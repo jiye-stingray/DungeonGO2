@@ -104,3 +104,9 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# macOS
+.DS_Store
+
+# 로컬 배치 테스트 출력
+/TestResults/
