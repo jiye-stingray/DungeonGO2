@@ -38,14 +38,18 @@
 - 위 표에 없는 상황은 https://gitmoji.dev 목록에서 고른다. 표는 자주 쓰는 것만 추린 것이다.
 
 ## 브랜치 규칙
-- `main`은 항상 CI를 통과한 상태를 유지한다. `main`에 직접 푸시하지 않고 PR로만 합친다.
+- 오래 사는 브랜치는 `main`과 `dev` 둘이다.
+  - `dev`: 통합 브랜치. 기본 브랜치이며 모든 작업 브랜치의 PR 대상이다.
+  - `main`: 배포 가능 상태만 둔다. `dev`에서 PR로만 합친다. 직접 푸시는 보호 규칙으로 막혀 있다.
+- 흐름: `작업 브랜치 → (PR) → dev → (PR) → main`.
 - 작업 브랜치 이름: `<종류>/<짧은-설명>`. 설명은 영어 소문자 kebab-case, 3~5단어.
   - 종류: `feat`(기능) / `fix`(버그) / `refactor` / `test` / `ci` / `chore`(설정·정리) / `docs` / `asset`
   - 예: `feat/battle-turn-queue`, `fix/dot-tick-death-order`, `ci/pr-test-workflow`, `chore/init-project-and-ci`
   - 이슈가 있으면 번호를 앞에 붙인다: `feat/12-energy-system`
 - PR 제목은 커밋 규칙과 같은 gitmoji 형식으로 쓴다. 본문에는 기획서 페이지 번호와 확인 방법을 적는다.
-- 합칠 때는 **Squash merge**를 쓴다. 작업 중 커밋은 자유롭게 하고, 합쳐지는 커밋 하나의 제목이 gitmoji 규칙을 따르면 된다.
-- 합친 브랜치는 삭제한다. 오래 사는 브랜치는 `main` 하나뿐이다.
+- 머지 조건: "Unity Tests" 체크가 초록이어야 합칠 수 있다(`main`·`dev` 보호 규칙). 리뷰 승인은 요구하지 않는다.
+- 작업 브랜치 → `dev`는 **Squash merge**를 기본으로 한다. 합쳐지는 커밋 하나의 제목이 gitmoji 규칙을 따르면 된다. `dev` → `main`은 커밋 이력을 보존하는 Merge commit을 쓴다.
+- 합친 작업 브랜치는 자동 삭제된다(저장소 설정). `main`과 `dev`는 삭제하지 않는다.
 - 릴리즈·핫픽스 브랜치는 배포 단계가 오면 그때 정한다.
 
 ## 코드 규칙
